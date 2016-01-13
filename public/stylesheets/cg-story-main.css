@@ -1,0 +1,27 @@
+.story-box {
+  margin: 10px;
+  display: inline-block;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 3px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background-color: white; }
+  .story-box header .content {
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc; }
+    .story-box header .content h4 {
+      font-size: 16px;
+      margin: 0; }
+  .story-box article {
+    border-bottom: 1px solid #ccc; }
+    .story-box article .content {
+      width: 95%;
+      margin: 0 auto;
+      padding: 10px 0; }
+  .story-box footer .content {
+    width: 95%;
+    margin: 0 auto;
+    padding: 5px 0; }

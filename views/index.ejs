@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bonfire</title>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<style type="text/css">
+		.site-width {
+			width: 90%;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<head>
+		<div class='site-width'>
+			<h1>
+				header
+			</h1>
+		</div>
+	</head>
+	<section>
+		<div class='site-width'>
+			<div id='the-form'><%-theform%></div>
+			<div id='react-test-component-box'><%-react%></div>
+		</div>
+	</section>
+	
+	<section>
+		<div class='site-width'>
+			
+		</div>
+	</section>
+	
+	<section style='padding: 40px 0;'>
+		
+	</section>
+	<script src='https://fb.me/react-0.14.5.js'></script>
+	<script src='https://fb.me/react-dom-0.14.5.js'></script>
+	<script src='http://code.jquery.com/jquery-2.1.3.js'></script>
+	<script src="/javascripts/bundle.js"></script>
+	<script type="text/javascript">
+		
+		function tellStory() {
+			var title = $('#story-title').val();
+			var body = $('#story-body').val();
+			var data = { title: title, body: body };
+		}
+
+		function ajaxRequestTypes() {
+			return {
+				get : 'GET',
+				post : 'POST',
+				put : 'PUT',
+				del : 'DELETE'
+			}
+		}
+		function ajax(url, method, data, success, error) {
+			$.ajax({
+			  url: url,
+			  method: method,
+			  data: data
+			})
+			.done(function(data) {
+				if(success && success.length > 0) {
+					success(data);
+				} else {
+					ajaxSuccess(data);
+				}
+			})
+			.fail(function(jqXHR, errorString, exception) {
+				if(error && error.length > 0) {
+					error(jqXHR, errorString, exception)
+				} else {
+					ajaxError(jqXHR, errorString, exception);
+				}
+			});
+
+			function ajaxSuccess(data) {
+				console.log(data);
+			}
+			function ajaxError(jqXHR, errorString, exception) {
+				console.error(errorString);
+			}
+		}
+	</script>
+</body>
+</html>
