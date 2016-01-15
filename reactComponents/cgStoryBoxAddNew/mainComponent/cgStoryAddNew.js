@@ -31,11 +31,18 @@ var CgAddStory = React.createClass({
 			newItemBody: ''
 		};
 	},
+	isAnEmptyString: function(string) {
+		if (string && string.trim().length > 0) return false;
+		return true;
+	},
 	handleSubmit: function() {
-		FluxActions.addItem({
-			header: this.state.newItemHeader,
-			body: this.state.newItemBody
-		});
+		if(!this.isAnEmptyString(this.state.newItemHeader) && !this.isAnEmptyString(this.state.newItemBody)) {
+			FluxActions.addItem({
+				header: this.state.newItemHeader,
+				body: this.state.newItemBody
+			});
+		}
+		this.handleClear();
 	},
 	handleClear: function() {
 		this.setState({
@@ -62,7 +69,13 @@ var CgAddStory = React.createClass({
 	render: function() {
 		return(
 			<div>
-				<FormBox inputData={this.state.inputData} includeSubmitButton={true} includeClearButton={true} handleSubmit={this.handleSubmit} handleClear={this.handleClear}/>
+				<FormBox 
+					inputData={this.state.inputData} 
+					includeSubmitButton={true} 
+					includeClearButton={true} 
+					handleSubmit={this.handleSubmit} 
+					handleClear={this.handleClear}
+				/>
 			</div>
 		);
 	}
