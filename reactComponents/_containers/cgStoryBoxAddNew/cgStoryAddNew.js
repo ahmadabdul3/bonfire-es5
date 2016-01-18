@@ -2,7 +2,7 @@
 var React = require('react');
 var ReactDom = require('react-dom');
 var FormBox = require('../../formBox/formBox.js');
-var FluxActions = require('../fluxActions/fluxActions.js');
+var FluxActions = require('./fluxActions/fluxActions.js');
 
 var CgAddStory = React.createClass({
 	getInitialState: function() {
@@ -38,7 +38,7 @@ var CgAddStory = React.createClass({
 	handleSubmit: function() {
 		if(!this.isAnEmptyString(this.state.newItemHeader) && !this.isAnEmptyString(this.state.newItemBody)) {
 			FluxActions.addItem({
-				header: this.state.newItemHeader,
+				title: this.state.newItemHeader,
 				body: this.state.newItemBody
 			});
 		}

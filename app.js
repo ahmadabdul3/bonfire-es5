@@ -6,8 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
+require('./models/cgStory.js');
 
-//mongoose.connect('mongodb://localhost/news');
+mongoose.connect('mongodb://localhost/bonfire');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -66,7 +67,8 @@ module.exports = app;
 
 /*
 https://github.com/tylermcginnis/Flux-Todolist/blob/master/app/constants/appConstants.js
-
+mongod --dbpath /users/abdulahmad/desktop/node/bonfire/bonfire/data/db
+/usr/local/mongodb/mongodb-3.2.1/bin/mongo
 */
 
 

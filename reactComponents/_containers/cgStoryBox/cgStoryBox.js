@@ -1,26 +1,22 @@
 var React = require('react');
 var ReactDom = require('react-dom');
-var StoryComponent = require('../cgStory.js');
-var store = require('../fluxStores/fluxStores.js');
-var actions = require('../fluxActions/fluxActions.js');
+var StoryComponent = require('../../cgStory/cgStory.js');
+var store = require('./fluxStores/fluxStores.js');
+var actions = require('./fluxActions/fluxActions.js');
 
 var CgStoryBox = React.createClass({
 	getInitialState: function(){
 		return {
 		  stories: store.getList(),
-		  inputVal: ''
-		}
+		  inputVal: '',
+		};
 	},
 	componentDidMount: function(){
 		store.addChangeListener(this._onChange);
+		actions.requestItems();
 	},
 	componentWillUnmount: function(){
 		store.removeChangeListener(this._onChange);
-	},
-	exposeInput: function(element) {
-		this.updateInputs = function() {
-			console.log(element);
-		}
 	},
 	updateInput: function(e) {
 		this.setState({
@@ -35,26 +31,24 @@ var CgStoryBox = React.createClass({
 			inputVal: ''
 		});
 	},
-	/*handleAddItem: function(newItem){
-		actions.addItem(newItem);
+	deleteStory: function(id, index) {
+		//console.log(id + ' ' + index);
+		actions.deleteStory({id: id, index: index});
 	},
-	handleRemoveItem: function(index){
-		actions.removeItem(index);
-	},*/
 	_onChange: function(){
 		this.setState({
 		  stories: store.getList()
-		})
+		});
 	},
 	render: function() {
 		var storyElements = this.state.stories.map(function(data, index) {
 	      return (
-	        <StoryComponent header={data.header} body={data.body} key={index}/>
+	        <StoryComponent header={data.title} body={data.body} deleteAction={this.deleteStory} entityId={data._id} listKey={index} key={index}/>
 	      );
-	    });
+	    }, this);
 		return (
 			<div>
-				<link rel='stylesheet' href='/stylesheets/cg-story-main.css'/>
+				<link rel='stylesheet' href='/stylesheets/cgStoryMain.css'/>
 				{storyElements}
           	</div>		
 		);
@@ -68,8 +62,3 @@ if(typeof window !== 'undefined') {
 module.exports = CgStoryBox;
 
 
-
-
-
-				//<input type='text' value={this.state.inputVal} onChange={this.updateInput} onKeyUp={this.sayInputVal}/>
-				//<button onClick={this.clearInput}>clear</button>

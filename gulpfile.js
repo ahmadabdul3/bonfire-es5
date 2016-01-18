@@ -1,11 +1,12 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     notify = require('gulp-notify'),
+    rename = require('gulp-rename'),
     concat = require('gulp-concat');
 
 gulp.task('sassComponents', function() {
 
-	return gulp.src('sassComponents/**/mainScss/*.scss')
+	return gulp.src('sassComponents/**/mainScss/*.scss', {base: "./"})
 		.pipe(sass({
 			'sourcemap=none': true,
 			 errLogToConsole: true
@@ -13,7 +14,8 @@ gulp.task('sassComponents', function() {
 	        title: "mistake: ",
 	        message: "<%= error.message %>"
 	    }))
-		.pipe(concat('cg-story-main.css'))
+		//.pipe(concat('cg-story-main.css'))
+		.pipe(rename({dirname:''}))
 		.pipe(gulp.dest('public/stylesheets/'));
 });
 
