@@ -31,10 +31,6 @@ var CgStoryBox = React.createClass({
 			inputVal: ''
 		});
 	},
-	deleteStory: function(id, index) {
-		//console.log(id + ' ' + index);
-		actions.deleteStory({id: id, index: index});
-	},
 	_onChange: function(){
 		this.setState({
 		  stories: store.getList()
@@ -43,7 +39,7 @@ var CgStoryBox = React.createClass({
 	render: function() {
 		var storyElements = this.state.stories.map(function(data, index) {
 	      return (
-	        <StoryComponent header={data.title} body={data.body} deleteAction={this.deleteStory} entityId={data._id} listKey={index} key={index}/>
+	        <StoryComponent header={data.title} body={data.body} entityId={data._id} listKey={index} key={index}/>
 	      );
 	    }, this);
 		return (

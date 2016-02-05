@@ -67,6 +67,7 @@ module.exports = app;
 
 /*
 https://github.com/tylermcginnis/Flux-Todolist/blob/master/app/constants/appConstants.js
+/usr/local/mongodb/mongodb-3.2.1/bin
 mongod --dbpath /users/abdulahmad/desktop/node/bonfire/bonfire/data/db
 /usr/local/mongodb/mongodb-3.2.1/bin/mongo
 */

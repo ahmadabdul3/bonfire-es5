@@ -1,4 +1,5 @@
 var React = require('react');
+var UserIconWithNameSmall = require('../userIconWithNameSmall/UserIconWithNameSmall.js');
 
 
 var CgStoryBoxHeader = React.createClass({
@@ -6,6 +7,7 @@ var CgStoryBoxHeader = React.createClass({
 		return (
 			<header>
 				<div className='content'>
+					<UserIconWithNameSmall image={this.props.userImage} name={this.props.userName}/>
 		        	<h4>
 		        		{this.props.text}
 		        	</h4>

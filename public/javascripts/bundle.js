@@ -20183,10 +20183,6 @@ var CgStoryBox = React.createClass({displayName: "CgStoryBox",
 			inputVal: ''
 		});
 	},
-	deleteStory: function(id, index) {
-		//console.log(id + ' ' + index);
-		actions.deleteStory({id: id, index: index});
-	},
 	_onChange: function(){
 		this.setState({
 		  stories: store.getList()
@@ -20195,7 +20191,7 @@ var CgStoryBox = React.createClass({displayName: "CgStoryBox",
 	render: function() {
 		var storyElements = this.state.stories.map(function(data, index) {
 	      return (
-	        React.createElement(StoryComponent, {header: data.title, body: data.body, deleteAction: this.deleteStory, entityId: data._id, listKey: index, key: index})
+	        React.createElement(StoryComponent, {header: data.title, body: data.body, entityId: data._id, listKey: index, key: index})
 	      );
 	    }, this);
 		return (
@@ -20470,19 +20466,14 @@ var StoryBoxFooter = require('./cgStoryBoxFooter.js');
 		_id : string? int?
 		header : string,
 		body : string,
-		deleteAction : function,
 		listKey : int
 	}
 */
 
 var CgStory = React.createClass({displayName: "CgStory",
-	deleteSelf: function() {
-		this.props.deleteAction(this.props.entityId, this.props.listKey);
-	},
 	render: function() {
 		return (
 			React.createElement("div", {className: "story-box"}, 
-				React.createElement("div", {onClick: this.deleteSelf}, "delete"), 
 				React.createElement(StoryBoxHeader, {text: this.props.header}), 
 				React.createElement(StoryBoxBody, {text: this.props.body}), 
 				React.createElement(StoryBoxFooter, null)
