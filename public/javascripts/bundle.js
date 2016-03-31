@@ -20522,6 +20522,7 @@ module.exports = CgStoryBoxFooter;
 
 },{"react":165}],178:[function(require,module,exports){
 var React = require('react');
+//var UserIconWithNameSmall = require('../userIconWithNameSmall/UserIconWithNameSmall.js');
 
 
 var CgStoryBoxHeader = React.createClass({displayName: "CgStoryBoxHeader",
@@ -20539,6 +20540,9 @@ var CgStoryBoxHeader = React.createClass({displayName: "CgStoryBoxHeader",
 });
 
 module.exports = CgStoryBoxHeader;
+
+
+//<UserIconWithNameSmall image={this.props.userImage} name={this.props.userName}/>
 
 },{"react":165}],179:[function(require,module,exports){
 var React = require('react');

@@ -70,6 +70,11 @@ https://github.com/tylermcginnis/Flux-Todolist/blob/master/app/constants/appCons
 /usr/local/mongodb/mongodb-3.2.1/bin
 mongod --dbpath /users/abdulahmad/desktop/node/bonfire/bonfire/data/db
 /usr/local/mongodb/mongodb-3.2.1/bin/mongo
+
+etc/nginx/ configuration file
+var/lib/mongodb mongodb on ubuntu
+
+force save vim :w !sudo tee %
 */
 
 
